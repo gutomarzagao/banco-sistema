@@ -1,6 +1,10 @@
-comando = input("comando:")
-print(comando)
-if(comando=='sair'):
-    exit()
+comando = input("Digite um comando:")
+while (comando!="sair"):
+    print(comando)
+    if(comando!='sair'):
+        print("comando inexistente")
+        comando = input("Digite um comando:")
+
 else:
-    print("comando inexistente")
+    exit()
+
