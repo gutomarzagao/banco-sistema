@@ -1,24 +1,29 @@
 comando = ""
-saldo=[0]
+extrato=[0]
+saldo=0
+depositar=int()
 while (True):
     comando = input("Digite um comando:")
     print(comando)
     if(comando=="deposito"):
         depositar=int(input("Valor do depósito:"))
         if(depositar<0):
-            print("nao aceitamos depositos negativos")
+            print("nao aceitamos depositos negativos.")
         else:
-            saldo.append(depositar)
+            extrato.append(depositar)
+            saldo += depositar
     elif(comando=="saque"):
         sacar=int(input("Valor que deseja sacar:"))
         if(sacar<0):
-            print("nao aceitamos saques negativos")
+            print("nao aceitamos saques negativos.")
+        elif(sacar>saldo):
+            print("saque maior que saldo, operacao nao realizada.")
         else:
-            saldo.append(-sacar)
+            extrato.append(-sacar)
+            saldo -= sacar
     elif(comando=="saldo"):
-        print("seu saldo é", sum(saldo))
+        print("seu saldo é", saldo)
     elif(comando=="sair"):
-        exit()
-    elif(comando!=['sair', 'saldo', 'saque', 'deposito']):
+        break
+    else:
         print("comando inexistente")
-    else: break
