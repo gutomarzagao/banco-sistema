@@ -1,11 +1,26 @@
-import funcoes
+import conta
 
 extrato=[0]
 saldo=0
-depositar=int()
+def comandar(x):
+    comando == x
+    return
+def exibir_saldo():
+    print("seu saldo é", saldo)
+    return
+
+def exibir_extrato():
+    return
+
+def sacar():
+    return
+
+def depositar():
+    return
 while (True):
     comando = input("Digite um comando:")
     print(comando)
+
     if comando=="deposito":
         depositar=int(input("Valor do depósito:"))
         if depositar<0:
@@ -13,6 +28,7 @@ while (True):
         else:
             extrato.append(depositar)
             saldo += depositar
+
     elif comando== "saque":
         sacar=int(input("Valor que deseja sacar:"))
         if(sacar<0):
@@ -22,8 +38,10 @@ while (True):
         else:
             extrato.append(-sacar)
             saldo -= sacar
-    elif comando== "saldo":
-        print("seu saldo é", saldo)
+
+    elif comandar('saldo'):
+        exibir_saldo()
+
     elif comando == "extrato":
         for k,v in enumerate(extrato):
             print(k, v)
