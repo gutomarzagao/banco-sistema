@@ -2,6 +2,10 @@ class Conta:
     extrato = []
     saldo = 0
     operacao = []
+    numero = None
+
+    def __init__(self, numero):
+        self.numero = numero
 
     def exibir_saldo(self):
         print("seu saldo é", self.saldo)

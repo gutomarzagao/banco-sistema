@@ -1,29 +1,40 @@
 from conta import Conta
 
-conta1 = Conta()
-logado = False
+conta_logada = None
+contas = []
 
 while (True):
     comando = input("Digite um comando:")
     print(comando)
-    if comando == 'deposito' and logado:
+    if comando == 'deposito' and conta_logada != None:
         valor = int(input("Valor do depósito:"))
-        conta1.depositar(valor)
+        conta_logada.depositar(valor)
 
-    elif comando == 'saque' and logado:
+    elif comando == 'saque' and conta_logada != None:
         valor = int(input("Valor do saque:"))
-        conta1.sacar(valor)
+        conta_logada.sacar(valor)
 
-    elif comando == 'saldo' and logado:
-        conta1.exibir_saldo()
+    elif comando == 'saldo' and conta_logada != None:
+        conta_logada.exibir_saldo()
+        print (conta_logada.numero)
 
-    elif comando == 'extrato' and logado:
-        conta1.exibir_extrato()
-    elif comando == 'sair' and logado:
-        logado = False
-    elif comando == 'entrar' and not logado:
+    elif comando == 'extrato' and conta_logada != None:
+        conta_logada.exibir_extrato()
+
+    elif comando == 'sair' and conta_logada != None:
+        conta_logada = None
+
+    elif comando == 'entrar' and conta_logada == None:
+        numero_conta = int(input("digite o numero da sua conta"))
+        for conta in contas:
+            if conta.numero == numero_conta:
+                conta_logada = conta
+
+        if conta_logada == None:
+            conta_logada = Conta(numero_conta)
+            contas.append(conta_logada)
         print("Bem vindo a sua conta")
-        logado = True
+
     elif comando == 'fechar':
         exit()
     else:
