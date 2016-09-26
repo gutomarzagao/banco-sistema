@@ -2,9 +2,6 @@ class Conta:
     extrato = []
     saldo = 0
     operacao = []
-    valor = 0
-
-
 
     def exibir_saldo(self):
         print("seu saldo é", self.saldo)
