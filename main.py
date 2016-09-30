@@ -1,9 +1,14 @@
 from conta import Conta
+import json
 
 conta_logada = None
 contas = []
 
+def converter_lista_json(obj):
+    return obj.__dict__
+
 while (True):
+
     comando = input("Digite um comando:")
     print(comando)
     if comando == 'sair' and conta_logada != None:
@@ -21,6 +26,8 @@ while (True):
         print("Bem vindo a sua conta")
 
     elif comando == 'fechar':
+        with open('dados.txt', 'w') as dados:
+            json.dump(contas, dados, default=converter_lista_json)
         exit()
     elif comando == 'deposito' and conta_logada != None:
         valor = int(input("Valor do depósito:"))
